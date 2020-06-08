@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuActivity">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="#DFE3DF">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="4"
+                android:text="메인 메뉴"
+                android:textColor="#ffffff"
+                android:textSize="30dp"
+                android:textStyle="bold"></TextView>
+
+            <Button
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:id="@+id/logoutBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="#B1B1B1"
+                android:text="로그아웃"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center">
+            </Button>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/feedbackView"
+                android:layout_width="330dp"
+                android:layout_height="280dp"
+                android:layout_margin="40dp"
+                android:text="  게시판  "
+                android:textSize= "20dp"
+                android:background="#D6D4D4">
+
+            </TextView>
+
+            <Button
+                android:id="@+id/timesettigBtn"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="#B1B1B1"
+                android:text="약 주기 설정"
+                android:layout_gravity="center">
+            </Button>
+
+
+            <Button
+                android:id="@+id/patientimgBtn"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="#B1B1B1"
+                android:text="환자 상태 확인"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center">
+            </Button>
+
+            <Button
+                android:id="@+id/patientlocBtn"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="#B1B1B1"
+                android:text="환자 위치 확인"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center">
+            </Button>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
