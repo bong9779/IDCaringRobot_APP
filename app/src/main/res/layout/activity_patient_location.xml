@@ -10,45 +10,22 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:background="#DFE3DF">
+        android:background="#FFFFFF">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/colorPrimary">
+            android:background="@drawable/patientlocbar"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_marginLeft="20dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="4"
-                android:text="환자 위치 확인"
-                android:textColor="#ffffff"
-                android:textSize="30dp"
-                android:textStyle="bold">
-
-            </TextView>
-
-            <Button
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
+            <ImageButton
                 android:id="@+id/logoutBtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="#B1B1B1"
-                android:text="로그아웃"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="center">
-            </Button>
-
-
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:background="#00FFFFFF"
+                android:src="@drawable/logoutbtn"></ImageButton>
 
         </LinearLayout>
 
@@ -58,8 +35,10 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="330dp"
-                android:layout_height="280dp"
+                android:id="@+id/imageview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
                 android:layout_margin="40dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
@@ -72,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_margin="40dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:layout_gravity="center"
                 android:text="2020년 5월 25일 오후 6:39 ㅇㅇㅇ환자의 집안 위치입니다."
                 android:textColor="#0C0C0C"
@@ -79,18 +59,29 @@
                 android:textStyle="bold">
             </TextView>
 
-            <Button
-                android:id="@+id/returnBtn"
-                android:layout_width="280dp"
+            <ImageButton
+                android:id="@+id/locationBtn"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="#B1B1B1"
-                android:text="뒤로 가기"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center">
-            </Button>
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:src="@drawable/locationbtn">
+
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/returnBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:src="@drawable/backbtn">
+
+            </ImageButton>
         </LinearLayout>
 
     </LinearLayout>

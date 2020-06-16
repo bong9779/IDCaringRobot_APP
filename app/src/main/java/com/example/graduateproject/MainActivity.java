@@ -7,7 +7,12 @@ import com.example.graduateproject.RetrofitClient;
 import com.example.graduateproject.ServiceApi;
 import com.example.graduateproject.JoinData;
 import com.example.graduateproject.JoinResponse;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
+import io.socket.client.IO;
+import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,19 +23,26 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.net.URISyntaxException;
+
+
 public class MainActivity extends AppCompatActivity {
     private ProgressBar mProgressView;
     private ServiceApi service;
     EditText idText;
     EditText passwordText;
-    Button registerBtn;
-    Button loginBtn;
+    ImageButton registerBtn;
+    ImageButton loginBtn;
+
+    private Socket socket;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -38,28 +50,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         idText = (EditText) findViewById(R.id.idText);
         passwordText = (EditText) findViewById(R.id.passwordText);
-        registerBtn = (Button) findViewById(R.id.RegisterBtn);
-        loginBtn = (Button) findViewById(R.id.loginBtn);
+        registerBtn = (ImageButton) findViewById(R.id.RegisterBtn);
+        loginBtn = (ImageButton) findViewById(R.id.loginBtn);
         mProgressView = (ProgressBar) findViewById(R.id.join_progress);
         service = RetrofitClient.getClient().create(ServiceApi.class);
 
-        registerBtn.setOnClickListener(new View.OnClickListener(){
+        registerBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent registerIntent = new Intent(MainActivity.this, RegisterActivity.class);
                 MainActivity.this.startActivity(registerIntent);
             }
         });
 
-        loginBtn.setOnClickListener(new View.OnClickListener(){
+        loginBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 attemptLogin();
             }
         });
     }
+
+
     private void attemptLogin() {
         idText.setError(null);
         passwordText.setError(null);
@@ -104,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 if (result.getCode() == 200) {
                 Intent loginIntent = new Intent(MainActivity.this, MenuActivity.class);
                 loginIntent.putExtra("userid", result.getUserId());
+                loginIntent.putExtra("patient_id", result.getPatient_id());
                 System.out.println("보낼아이디"+result.getUserId());
                 MainActivity.this.startActivity(loginIntent);}
             }

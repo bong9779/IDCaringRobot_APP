@@ -10,89 +10,93 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:background="#DFE3DF">
+        android:background="#FFFFFF">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="225dp"
-            android:orientation="vertical"
-            android:background="@color/colorPrimary">
-            <ImageView
-                android:paddingTop="10dp"
-                android:layout_width="600dp"
-                android:layout_height="125dp"
-                android:layout_gravity="center"
-                android:layout_margin="20dp"
-                android:src="@drawable/title">
-            </ImageView>
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/title2">
-            </ImageView>
+                android:layout_margin="20dp"
+                android:layout_weight="5"
+                android:paddingTop="10dp"
+                android:src="@drawable/medicine"></ImageView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:src="@drawable/titlewhite"></ImageView>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
             <EditText
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:hint="아이디"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginBottom="20dp"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColor="#0B0B0B"
+                android:textColorHint="@color/colorAccent"
                 android:id="@+id/idText"
                 android:drawableStart="@drawable/ic_sentiment_satisfied_black_24dp"
                 android:drawableLeft="@drawable/ic_sentiment_satisfied_black_24dp"
-                android:layout_marginTop="50dp"
-                android:background="@color/colorPrimary">
+
+                android:background="@drawable/border">
             </EditText>
             <EditText
                 android:inputType="textPassword"
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:hint="비밀번호"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColor="#0B0B0B"
+                android:textColorHint="@color/colorAccent"
                 android:id="@+id/passwordText"
                 android:drawableStart="@drawable/ic_https_black_24dp"
                 android:drawableLeft="@drawable/ic_https_black_24dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary">
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/border">
             </EditText>
 
-            <Button
+            <ImageButton
                 android:id="@+id/loginBtn"
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="#B1B1B1"
-                android:text="로그인"
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="50dp"
-                android:layout_gravity="center">
-            </Button>
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:src="@drawable/btnlogin"></ImageButton>
 
-            <Button
+            <ImageButton
                 android:id="@+id/RegisterBtn"
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="#B1B1B1"
-                android:text="회원가입"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center">
-            </Button>
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:src="@drawable/signup"
+                android:text="회원가입"></ImageButton>
 
         </LinearLayout>
 
@@ -103,6 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone" />
+
 
     </LinearLayout>
 

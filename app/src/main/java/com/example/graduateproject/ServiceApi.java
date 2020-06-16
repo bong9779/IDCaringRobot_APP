@@ -27,4 +27,7 @@ public interface ServiceApi {
 
     @POST("/user/gettime")
     Call<TimeGetResponse> userGetTime(@Body TimeGetData data);
+
+    @POST("/user/getboard")
+    Call<BoardGetResponse> userBoardGet(@Body BoardGetData data);
 }

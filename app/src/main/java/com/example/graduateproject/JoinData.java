@@ -18,12 +18,20 @@ public class JoinData {
     @SerializedName("userEmail")
     private String userEmail;
 
-    public JoinData(String userName, String userId, String userPwd, String patient_id, String userEmail) {
+    @SerializedName("userPhone")
+    private String userPhone;
+
+    @SerializedName("userMac")
+    private String userMac;
+
+    public JoinData(String userName, String userId, String userPwd, String patient_id, String userEmail, String userPhone, String userMac) {
         this.userId = userId;
         this.userPwd = userPwd;
         this.userName = userName;
         this.patient_id = patient_id;
         this.userEmail = userEmail;
+        this.userPhone = userPhone;
+        this.userMac = userMac;
 
     }
 }

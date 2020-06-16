@@ -7,48 +7,28 @@
     tools:context=".TimeSettingActivity">
 
     <LinearLayout
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:background="#DFE3DF">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/colorPrimary">
+            android:background="@drawable/timesettingbar"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_marginLeft="20dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="4"
-                android:text="약 복용 주기 설정"
-                android:textColor="#ffffff"
-                android:textSize="30dp"
-                android:textStyle="bold">
-
-            </TextView>
-
-            <Button
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
+            <ImageButton
                 android:id="@+id/logoutBtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="#B1B1B1"
-                android:text="로그아웃"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="center">
-            </Button>
-        </LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:background="#00FFFFFF"
+                android:src="@drawable/logoutbtn"></ImageButton>
 
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,32 +36,31 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_marginLeft="20dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="2"
                 android:text="약 이름 :"
                 android:textColor="#020202"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textStyle="bold">
 
             </TextView>
 
             <EditText
-                android:layout_weight="3"
-                android:layout_marginRight="20dp"
                 android:id="@+id/mednameText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                android:background="#DDDDDD"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp"
-                android:layout_gravity="center">
-            </EditText>
+                android:layout_weight="4"
+                android:background="@drawable/border"
+                android:textSize="30dp"
+                android:textStyle="bold"></EditText>
         </LinearLayout>
 
         <LinearLayout
@@ -91,108 +70,106 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_marginLeft="20dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="2"
                 android:text="약 주기 :"
                 android:textColor="#020202"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textStyle="bold">
 
             </TextView>
 
             <EditText
-                android:layout_weight="3"
-                android:layout_marginRight="20dp"
                 android:id="@+id/medtimeText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                android:background="#DDDDDD"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp"
-                android:layout_gravity="center">
-            </EditText>
+                android:layout_weight="4"
+                android:background="@drawable/border"
+                android:textSize="30dp"
+                android:textStyle="bold"></EditText>
         </LinearLayout>
 
-        <Button
-            android:layout_marginRight="10dp"
+        <ImageButton
             android:id="@+id/saveBtn"
-            android:layout_width="280dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:background="#B1B1B1"
-            android:text="저장"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center">
-        </Button>
+            android:layout_marginRight="10dp"
+            android:background="#ffffff"
+            android:src="@drawable/savebtn"></ImageButton>
 
         <LinearLayout
-            android:layout_width="330dp"
-            android:layout_height="230dp"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
             android:layout_gravity="center"
-            android:background="#ffffff">
+            android:layout_marginTop="30dp"
+            android:layout_weight="3"
+            android:background="#ffffff"
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="현재 저장된 약 목록"
-                android:textStyle="bold"
-                android:textSize="30dp">
-            </TextView>
+                android:textSize="20dp"
+                android:textStyle="bold"></TextView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="5"
                 android:orientation="vertical">
 
                 <ListView
-                    android:choiceMode="singleChoice"
                     android:id="@+id/timenameText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:choiceMode="singleChoice"
                     android:gravity="center"
-                    android:textStyle="bold"
-                    android:textSize="20dp">
-                </ListView>
+                    android:textSize="20dp"
+                    android:textStyle="bold"></ListView>
 
             </LinearLayout>
 
 
-    </LinearLayout>
-        <Button
+        </LinearLayout>
+
+        <ImageButton
             android:id="@+id/delBtn"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="삭제"
-            android:layout_marginTop="10dp"
-            android:textStyle="bold"
             android:layout_gravity="center"
-            android:textSize="20dp">
-        </Button>
-        <Button
-            android:id="@+id/returnBtn"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:background="#B1B1B1"
-            android:text="뒤로 가기"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:layout_gravity="center">
-        </Button>
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:src="@drawable/deletebtn"></ImageButton>
+
+        <ImageButton
+            android:id="@+id/returnBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:src="@drawable/backbtn"></ImageButton>
+
         <ProgressBar
             android:id="@+id/join_progress"
             android:layout_width="wrap_content"

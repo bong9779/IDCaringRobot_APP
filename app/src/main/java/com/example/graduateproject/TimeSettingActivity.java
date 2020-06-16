@@ -7,31 +7,40 @@ import com.example.graduateproject.ServiceApi;
 import com.example.graduateproject.TimeData;
 import com.example.graduateproject.TimeResponse;
 import com.example.graduateproject.TimeGetResponse;
+import com.google.gson.JsonObject;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import io.socket.client.IO;
+import io.socket.client.Socket;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TimeSettingActivity extends AppCompatActivity {
-    Button returnBtn;
-    Button saveBtn;
-    Button delBtn;
-    Button logoutBtn;
+    ImageButton returnBtn;
+    ImageButton saveBtn;
+    ImageButton delBtn;
+    ImageButton logoutBtn;
     EditText mednameText;
     EditText medtimeText;
     TextView invisiblebtn;
@@ -39,34 +48,66 @@ public class TimeSettingActivity extends AppCompatActivity {
     String[] medNameApp;
     String[] medTimeApp;
     String userid;
+    String patient_id;
     ListView timenameText;
+    public Object a ;
+
+
+    private Socket socket;
+    {
+        try {
+            socket = IO.socket("http://172.16.108.178:3030"); // 내 서버 ip 넣기, localhost와 같은 공공ip는 입력불가능.
+            socket.on(Socket.EVENT_CONNECT, (Object... objects) -> {
+                socket.emit("joinRoom_app", "room2");
+            });
+            socket.connect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     int code=0;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_setting);
-        returnBtn = (Button) findViewById(R.id.returnBtn);
-        saveBtn = (Button) findViewById(R.id.saveBtn);
+        returnBtn = (ImageButton) findViewById(R.id.returnBtn);
+        saveBtn = (ImageButton) findViewById(R.id.saveBtn);
         mednameText = (EditText)findViewById(R.id.mednameText);
         medtimeText = (EditText)findViewById(R.id.medtimeText);
         timenameText = (ListView) findViewById(R.id.timenameText);
-        delBtn = (Button) findViewById(R.id.delBtn);
-        logoutBtn = (Button) findViewById(R.id.logoutBtn);
+        delBtn = (ImageButton) findViewById(R.id.delBtn);
+        logoutBtn = (ImageButton) findViewById(R.id.logoutBtn);
         service = RetrofitClient.getClient().create(ServiceApi.class);
         Intent intent = getIntent();
         userid = intent.getStringExtra("userid");
+        patient_id = intent.getStringExtra("patient_id");
         System.out.println("받은 아이디"+userid);
         GetTimeSetting(new TimeGetData(userid));
 
-        saveBtn.setOnClickListener(new View.OnClickListener(){
 
+        //약이름, 주기 입력 버튼튼
+       saveBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 timeSetting();
+
+                JsonObject preJsonObject = new JsonObject();
+                preJsonObject.addProperty("period", medtimeText.getText() + "");
+                preJsonObject.addProperty("name", mednameText.getText() + "");
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject(preJsonObject.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                socket.emit("insert_info", jsonObject); // 서버로 "reqMsg_period"라는 핸들로 JsonObject 데이터를 보낸다. (emit)
             }
         });
+
         logoutBtn.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -76,12 +117,14 @@ public class TimeSettingActivity extends AppCompatActivity {
                 TimeSettingActivity.this.startActivity(logoutIntent);
             }
         });
+
         returnBtn.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view){
                 Intent ReturnIntent = new Intent(TimeSettingActivity.this, MenuActivity.class);
                 ReturnIntent.putExtra("userid", userid);
+                ReturnIntent.putExtra("patient_id", patient_id);
                 TimeSettingActivity.this.startActivity(ReturnIntent);
             }
         });
@@ -113,7 +156,7 @@ public class TimeSettingActivity extends AppCompatActivity {
             focusView.requestFocus();
         } else {
             System.out.println("약이름"+mname+"약주기"+mtime);
-            CheckTimeSetting(new MednameData(mname,mtime,userid));
+            CheckTimeSetting(new MednameData(mname,mtime,userid,patient_id));
 
         }
 
@@ -141,7 +184,7 @@ public class TimeSettingActivity extends AppCompatActivity {
             public void onResponse(Call<MednameResponse> call, Response<MednameResponse> response) {
                 MednameResponse result = response.body();
                 Toast.makeText(TimeSettingActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
-                StartTimeSetting(new TimeData(result.getMedName(),result.getMedTime(),userid));
+                StartTimeSetting(new TimeData(result.getMedName(),result.getMedTime(),userid, patient_id));
             }
             @Override
             public void onFailure(Call<MednameResponse> call, Throwable t) {
@@ -184,6 +227,15 @@ public class TimeSettingActivity extends AppCompatActivity {
                 System.out.println(medtime);
                 System.out.println(medname);
                 data.add("약 이름: "+medname+"  약 주기: "+medtime);}
+
+                timenameText.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Object vo = (Object)timenameText.getAdapter().getItem(position);
+                        a = vo;
+                    }
+                });
+
                 delBtn.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View view){
@@ -192,6 +244,7 @@ public class TimeSettingActivity extends AppCompatActivity {
                             data.remove(pos);
                             System.out.println("pos값"+pos+userid);
                             timenameText.clearChoices();
+
                             adp.notifyDataSetChanged();
                             Delmedtable(new DelmedData(pos, userid));
                         }

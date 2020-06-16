@@ -12,9 +12,14 @@ public class LoginResponse {
     @SerializedName("userid")
     private String userid;
 
+    @SerializedName("patient_id")
+    private String patient_id;
+
     public int getCode() {
         return code;
     }
+
+    public String getPatient_id() { return patient_id; }
 
     public String getMessage() {
         return message;

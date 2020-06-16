@@ -11,7 +11,11 @@ import com.example.graduateproject.RetrofitClient;
 import com.example.graduateproject.ServiceApi;
 import com.example.graduateproject.JoinData;
 import com.example.graduateproject.JoinResponse;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
+import io.socket.client.IO;
+import io.socket.client.Socket;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,9 +26,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
     private ProgressBar mProgressView;
@@ -34,7 +42,11 @@ public class RegisterActivity extends AppCompatActivity {
     EditText textName;
     EditText textPatientID;
     EditText emailText;
-    Button registerBtn;
+    EditText phoneText;
+    EditText macText;
+    ImageButton registerBtn;
+    private Socket socket;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +56,9 @@ public class RegisterActivity extends AppCompatActivity {
         textName = (EditText) findViewById(R.id.textName);
         textPatientID = (EditText) findViewById(R.id.textPatientID);
         emailText = (EditText) findViewById(R.id.emailText);
-        registerBtn = (Button) findViewById(R.id.RegisterBtn);
+        registerBtn = (ImageButton) findViewById(R.id.RegisterBtn);
+        phoneText = (EditText) findViewById(R.id.phoneText);
+        macText = (EditText) findViewById(R.id.macText);
         mProgressView = (ProgressBar) findViewById(R.id.join_progress);
         service = RetrofitClient.getClient().create(ServiceApi.class);
 
@@ -62,11 +76,15 @@ public class RegisterActivity extends AppCompatActivity {
         idText.setError(null);
         textPatientID.setError(null);
         emailText.setError(null);
+        phoneText.setError(null);
+        macText.setError(null);
         String name = textName.getText().toString();
         String id = idText.getText().toString();
         String password = passwordText.getText().toString();
         String patientid = textPatientID.getText().toString();
         String email = emailText.getText().toString();
+        String phone = phoneText.getText().toString();
+        String mac = macText.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -110,11 +128,23 @@ public class RegisterActivity extends AppCompatActivity {
             cancel = true;
         }
 
+        if (phone.isEmpty()) {
+            phoneText.setError("번호를 입력해주세요.");
+            focusView = phoneText;
+            cancel = true;
+        }
+
+        if (mac.isEmpty()) {
+            macText.setError("맥주소를 입력해주세요.");
+            focusView = macText;
+            cancel = true;
+        }
+
         if (cancel) {
             focusView.requestFocus();
         } else {
             System.out.println("아이디"+id+"이름"+name+"비번"+password+"환자번호"+patientid+"이메일"+email);
-            startJoin(new JoinData(name, id, password, patientid, email));
+            startJoin(new JoinData(name, id, password, patientid, email, phone, mac));
             showProgress(true);
         }
 

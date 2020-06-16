@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MappingActivity">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="#DFE3DF">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/mainmenu">
+
+            <ImageButton
+                android:id="@+id/logoutBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:background="#00FFFFFF"
+                android:src="@drawable/logoutbtn"></ImageButton>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageview_mapping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_weight="3"
+                android:src="@drawable/mappingimg">
+            </ImageView>
+
+            <ImageButton
+                android:id="@+id/mapping_image"
+                android:layout_width="match_parent"
+                android:src="@drawable/mappincheckbtn"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:layout_weight="0.7"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center">
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:id="@+id/mappingstartbtn"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:src="@drawable/mappingstart"
+                android:layout_weight="0.7"
+                android:layout_gravity="center">
+            </ImageButton>
+
+
+            <ImageButton
+                android:src="@drawable/top"
+                android:id="@+id/front"
+                android:layout_weight="0.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#ffffff"
+                android:text="앞쪽"
+                android:layout_gravity="center">
+            </ImageButton>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="0.2"
+                android:layout_marginBottom="20dp">
+
+                <ImageButton
+                    android:id="@+id/left"
+                    android:src="@drawable/left"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:background="#ffffff"
+                    android:text="왼쪽"
+                    android:layout_gravity="right">
+                </ImageButton>
+
+                <ImageButton
+                    android:id="@+id/back"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/back"
+                    android:background="#ffffff"
+                    android:layout_weight="1"
+                    android:layout_gravity="center">
+                </ImageButton>
+
+                <ImageButton
+                    android:id="@+id/right"
+                    android:src="@drawable/right"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="오른쪽"
+                    android:background="#ffffff"
+                    android:layout_gravity="left">
+                </ImageButton>
+            </LinearLayout>
+
+
+            <ImageButton
+                android:id="@+id/returnBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:src="@drawable/backbtn">
+            </ImageButton>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

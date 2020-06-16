@@ -10,25 +10,22 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:background="#DFE3DF">
+        android:background="#ffffff">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/colorPrimary">
+            android:layout_weight="1"
+            android:background="#ffffff">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="회원가입"
-                android:textColor = "#ffffff"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-            </TextView>
-
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:layout_gravity="left"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/signuptxt"></ImageView>
 
 
         </LinearLayout>
@@ -36,20 +33,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="6">
             <EditText
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:hint="아이디"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColor="#0B0B0B"
+                android:textColorHint="@color/colorAccent"
                 android:id="@+id/idText"
                 android:drawableStart="@drawable/ic_sentiment_satisfied_black_24dp"
                 android:drawableLeft="@drawable/ic_sentiment_satisfied_black_24dp"
-                android:layout_marginTop="50dp"
-                android:background="@color/colorPrimary">
+                android:layout_marginTop="30dp"
+                android:background="@drawable/border">
             </EditText>
             <EditText
                 android:inputType="textPassword"
@@ -58,13 +56,13 @@
                 android:hint="비밀번호"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColor="#0B0B0B"
+                android:textColorHint="@color/colorAccent"
                 android:id="@+id/passwordText"
                 android:drawableStart="@drawable/ic_https_black_24dp"
                 android:drawableLeft="@drawable/ic_https_black_24dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary">
+                android:background="@drawable/border">
             </EditText>
 
             <EditText
@@ -73,13 +71,13 @@
                 android:hint="환자 이름"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColor="#0B0B0B"
+                android:textColorHint="@color/colorAccent"
                 android:id="@+id/textName"
                 android:drawableStart="@drawable/ic_local_hospital_black_24dp"
                 android:drawableLeft="@drawable/ic_local_hospital_black_24dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary">
+                android:background="@drawable/border">
             </EditText>
 
             <EditText
@@ -88,13 +86,13 @@
                 android:hint="환자 번호"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColor="#0B0B0B"
+                android:textColorHint="@color/colorAccent"
                 android:id="@+id/textPatientID"
                 android:drawableStart="@drawable/ic_local_hospital_black_24dp"
                 android:drawableLeft="@drawable/ic_local_hospital_black_24dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary">
+                android:background="@drawable/border">
             </EditText>
 
             <EditText
@@ -103,27 +101,54 @@
                 android:hint="email"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColor="#0B0B0B"
+                android:textColorHint="@color/colorAccent"
                 android:id="@+id/emailText"
                 android:drawableStart="@drawable/ic_email_black_24dp"
                 android:drawableLeft="@drawable/ic_email_black_24dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary">
+                android:background="@drawable/border">
             </EditText>
 
-            <Button
+            <EditText
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:hint="cellphone"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:textColor="#0B0B0B"
+                android:textColorHint="@color/colorAccent"
+                android:id="@+id/phoneText"
+                android:drawableStart="@drawable/ic_stay_current_portrait_black_24dp"
+                android:drawableLeft="@drawable/ic_stay_current_portrait_black_24dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border">
+            </EditText>
+
+            <EditText
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:hint="mac address"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:textColor="#0B0B0B"
+                android:textColorHint="@color/colorAccent"
+                android:id="@+id/macText"
+                android:drawableStart="@drawable/ic_stay_current_portrait_black_24dp"
+                android:drawableLeft="@drawable/ic_stay_current_portrait_black_24dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border">
+            </EditText>
+
+            <ImageButton
                 android:id="@+id/RegisterBtn"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="#B1B1B1"
-                android:text="가입하기"
-                android:layout_marginTop="50dp"
+                android:background="#ffffff"
+                android:src="@drawable/signup"
+                android:layout_marginTop="30dp"
                 android:layout_gravity="center">
-            </Button>
+            </ImageButton>
 
             <ProgressBar
 
